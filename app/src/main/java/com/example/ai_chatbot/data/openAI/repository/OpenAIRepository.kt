@@ -14,7 +14,11 @@ class OpenAIRepository {
             val response = openAIDatasource.getCompletionSample("Bearer ${BuildConfig.OPENAI_API_KEY}", request)
             response.choices.firstOrNull()?.message?.content ?: "No response"
         } catch (e: Exception) {
-            "Error: ${e.message}"
+            if (e.message?.contains("429") == true) {
+                "Rate limit exceeded. Please try again later."
+            } else {
+                "Error: ${e.message}"
+            }
         }
     }
 }

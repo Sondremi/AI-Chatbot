@@ -32,24 +32,17 @@ class OpenAIViewModel: ViewModel() {
             _openAIUIState.update {
                 it.copy(isLoading = true)
             }
-            try {
-                val responseSample = openAIRepository.getCompletionSample(prompt)
 
-                _openAIUIState.update {
-                    it.copy(response = responseSample)
-                }
+            val responseSample = openAIRepository.getCompletionSample(prompt)
 
-                addBotMessage(responseSample)
-            } catch (e: Exception) {
-                val error = "Error: ${e.message}"
+            _openAIUIState.update {
+                it.copy(response = responseSample)
+            }
 
-                _openAIUIState.update {
-                    it.copy(response = error)
-                }
-            } finally {
-                _openAIUIState.update {
-                    it.copy(isLoading = false)
-                }
+            addBotMessage(responseSample)
+
+            _openAIUIState.update {
+                it.copy(isLoading = false)
             }
         }
     }
