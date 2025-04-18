@@ -54,7 +54,7 @@ android {
 dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
-    //implementation("com.github.jeziellago:compose-markdown:0.5.7")
+    implementation("com.github.jeziellago:compose-markdown:0.5.7")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
